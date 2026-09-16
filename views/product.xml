@@ -1,0 +1,97 @@
+<odoo>
+    <record id="view_product_form_ai" model="ir.ui.view">
+        <field name="name">product.template.form.ai.button</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button name="action_generate_description"
+                        string="Generar descripción con IA"
+                        type="object"
+                        class="oe_highlight"
+                        icon="fa-magic"/>
+            </header>
+        </field>
+</record>
+
+    <record id="desa_website_view_sale_product_template_form" model="ir.ui.view">
+            <field name="name">desa.website.sale.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"></field>
+            <field name="arch" type="xml">
+		    <xpath expr="//page[@name='sales']" position="inside">
+			    <group>
+				    <field name="so_description_sale" />
+			    </group>
+		    </xpath>
+		    <xpath expr="//notebook" position="inside">
+			    <page string="Catalogo">
+				    <group>
+					    <field name="product_group_id" /> 
+					    <field name="steps" /> 
+					    <field name="alto" /> 
+					    <field name="alto1" /> 
+					    <field name="alto2" /> 
+					    <field name="ancho" /> 
+					    <field name="cruce" /> 
+					    <field name="peso" /> 
+				    </group>
+			    </page>
+		    </xpath>
+            </field>
+</record>
+
+
+    <record id="view_product_group_form" model="ir.ui.view">
+        <field name="name">view.product.group.form</field>
+        <field name="model">product.group</field>
+        <field name="arch" type="xml">
+		<form string="Grupos" >
+			<group>
+			    <field name="name" />
+			    <field name="description" />
+			    <field name="image" widget="image" />
+			    <field name="product_ids" >
+				    <tree>
+					    <field name="name" />
+					    <field name="default_code" />
+					    <field name="steps" /> 
+					    <field name="alto" /> 
+					    <field name="alto1" /> 
+					    <field name="alto2" /> 
+					    <field name="ancho" /> 
+					    <field name="cruce" /> 
+					    <field name="peso" /> 
+				    </tree>
+			    </field>
+			</group>
+		    <!-- field name="product_tmpl_id" / -->
+            </form>
+        </field>
+</record>
+
+
+    <record id="view_product_group_tree" model="ir.ui.view">
+        <field name="name">view.product.group.tree</field>
+        <field name="model">product.group</field>
+        <field name="arch" type="xml">
+	    <tree string="Grupos" >
+		    <field name="name" />
+		    <field name="description" />
+		    <!-- field name="product_tmpl_id" / -->
+            </tree>
+        </field>
+</record>
+
+
+    <record id="product_group_action" model="ir.actions.act_window">
+        <field name="name">Grupos</field>
+	<field name="res_model">product.group</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="product_group_menu" name="Grupos"
+              parent="sale.product_menu_catalog" action="product_group_action"
+ 	      sequence="200"/>
+
+</odoo>

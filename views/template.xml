@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="desa_website_sale" inherit_id="website_sale.product" name="Desa Product Details">
+		<!-- xpath expr="//h1[@itemprop='name']" position="attributes">
+			<attribute name="t-field">product.display_name</attribute>
+		</xpath -->
+		<xpath expr="//p[@t-field='product.description_sale']" position="replace" >
+			<p t-esc="product.so_description_sale" class="text-muted my-2" 
+				placeholder="A short description that will also appear on documents." />
+		</xpath>
+	</template>
+
+</odoo>

@@ -1,0 +1,51 @@
+<odoo>
+
+    <record id="view_escanort_catalog_form" model="ir.ui.view">
+        <field name="name">view.escanort.catalog.form</field>
+        <field name="model">escanort.catalogo</field>
+        <field name="arch" type="xml">
+		<form string="Catalogo" >
+			<header>
+				<button name="build_catalog" 
+					type="object"
+					string="Generar" 
+					class="btn-primary" />
+			</header>
+			<sheet>
+				<group>
+				    <field name="name" />
+				    <field name="date" />
+				    <field name="pricelist_id" />
+				    <field name="catalog_file" widget="binary" />
+				</group>
+			</sheet>
+		    <!-- field name="product_tmpl_id" / -->
+            </form>
+        </field>
+</record>
+
+
+    <record id="view_escanort_catalog_tree" model="ir.ui.view">
+        <field name="name">view.escanort.catalog.tree</field>
+        <field name="model">escanort.catalogo</field>
+        <field name="arch" type="xml">
+	    <tree string="Catalogo" >
+		    <field name="name" />
+		    <field name="date" />
+		    <!-- field name="product_tmpl_id" / -->
+            </tree>
+        </field>
+</record>
+
+
+    <record id="escanort_catalog_action" model="ir.actions.act_window">
+        <field name="name">Catalogo</field>
+	<field name="res_model">escanort.catalogo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="escanort_catalog_menu" name="Catalogo"
+              parent="sale.product_menu_catalog" action="escanort_catalog_action"
+ 	      sequence="300"/>
+
+</odoo>
